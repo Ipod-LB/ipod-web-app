@@ -1,7 +1,7 @@
 // Spotify Configuration
 // Get these values from https://developer.spotify.com/dashboard
 const CONFIG = {
-  SPOTIFY_CLIENT_ID: 'YOUR_SPOTIFY_CLIENT_ID_HERE',
+  SPOTIFY_CLIENT_ID: '14bc4795321642478a44e9b7a78b76e6',
   SPOTIFY_REDIRECT_URI: window.location.origin + '/callback.html',
   SPOTIFY_API_BASE: 'https://api.spotify.com/v1',
   SPOTIFY_AUTH_BASE: 'https://accounts.spotify.com/authorize',
