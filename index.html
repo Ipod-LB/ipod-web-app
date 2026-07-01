@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="iPod">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23333' width='192' height='192'/><circle cx='96' cy='60' r='30' fill='none' stroke='%23fff' stroke-width='2'/><circle cx='96' cy='60' r='25' fill='%23444'/></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23333' width='192' height='192' rx='40'/><circle cx='96' cy='60' r='30' fill='none' stroke='%23fff' stroke-width='2'/></svg>">
+  <title>iPod</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="device-frame">
+    <div class="screen">
+      <!-- Screen content here -->
+      <div id="app-container">
+        <!-- Dynamic content -->
+      </div>
+    </div>
+
+    <!-- Scroll Wheel -->
+    <div class="wheel-container">
+      <div class="wheel" id="scrollWheel">
+        <svg class="wheel-svg" viewBox="0 0 200 200">
+          <!-- Outer ring markers -->
+          <circle cx="100" cy="100" r="95" fill="none" stroke="#666" stroke-width="1"/>
+          <circle cx="100" cy="100" r="85" fill="none" stroke="#444" stroke-width="1" opacity="0.5"/>
+          
+          <!-- Tick marks -->
+          <g stroke="#888" stroke-width="2" opacity="0.6">
+            <line x1="100" y1="10" x2="100" y2="20"/>
+            <line x1="170.7" y1="29.3" x2="165.3" y2="34.7"/>
+            <line x1="190" y1="100" x2="180" y2="100"/>
+            <line x1="170.7" y1="170.7" x2="165.3" y2="165.3"/>
+            <line x1="100" y1="190" x2="100" y2="180"/>
+            <line x1="29.3" y1="170.7" x2="34.7" y2="165.3"/>
+            <line x1="10" y1="100" x2="20" y2="100"/>
+            <line x1="29.3" y1="29.3" x2="34.7" y2="34.7"/>
+          </g>
+          
+          <!-- Center circle -->
+          <circle cx="100" cy="100" r="40" fill="#333" stroke="#666" stroke-width="2"/>
+          <circle cx="100" cy="100" r="35" fill="#222"/>
+        </svg>
+      </div>
+      
+      <!-- Click pad in center -->
+      <div class="center-button" id="centerButton">
+        <div class="menu-dot"></div>
+      </div>
+    </div>
+
+    <!-- Control buttons -->
+    <div class="button-group">
+      <button class="control-btn" id="prevBtn">⏮</button>
+      <button class="control-btn play-btn" id="playBtn">▶</button>
+      <button class="control-btn" id="nextBtn">⏭</button>
+    </div>
+
+    <!-- Bottom speaker -->
+    <div class="speaker"></div>
+  </div>
+
+  <!-- Modals -->
+  <div id="uploadModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Add Music</h2>
+      <div class="upload-section">
+        <div class="upload-option">
+          <h3>Upload Files</h3>
+          <input type="file" id="fileInput" multiple accept="audio/*,.zip" class="file-input">
+          <p class="hint">MP3, WAV, or ZIP files</p>
+        </div>
+        <div class="divider">or</div>
+        <div class="upload-option">
+          <h3>Connect Spotify</h3>
+          <button id="spotifyBtn" class="btn-primary">Login with Spotify</button>
+          <p class="hint">Requires Spotify Premium for playback</p>
+        </div>
+      </div>
+      <button id="closeModal" class="btn-secondary">Close</button>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="spotify.js"></script>
+  <script src="audio-manager.js"></script>
+  <script src="file-uploader.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
