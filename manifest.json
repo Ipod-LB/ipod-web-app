@@ -2,7 +2,7 @@
   "name": "iPod Web App",
   "short_name": "iPod",
   "description": "Classic iPod emulator with Spotify and local file support",
-  "start_url": "/",
+  "start_url": "/ipod-web-app/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
